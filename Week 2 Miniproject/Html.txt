@@ -1,0 +1,18 @@
+SCRIPT:	
+function addBook() {
+  const bookTitle = document.getElementById("bookTitle").value;
+  const authorName = document.getElementById("authorName").value;
+  const yearOfPublication = parseInt(document.getElementById("yearOfPublication").value);
+  const currentYear = new Date().getFullYear();
+  const ageOfBook = currentYear - yearOfPublication;
+  const bookList = document.getElementById("bookList");
+  const bookItem = document.createElement("li");
+  bookItem.innerHTML = `${bookTitle} Written by ${authorName} (Published in ${yearOfPublication}, ${ageOfBook} years old) <button onclick="removeBook(this)">Remove</button>`;
+  bookList.appendChild(bookItem);
+  document.getElementById("bookTitle").value = "";
+  document.getElementById("authorName").value = "";
+  document.getElementById("yearOfPublication").value = "";  
+}
+function removeBook(button) {
+  const bookItem = button.parentNode;
+  bookItem.parentNode.removeChild(bookItem);  }
